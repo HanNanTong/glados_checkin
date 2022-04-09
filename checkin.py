@@ -27,8 +27,11 @@ def do_action():
     logger = logging.getLogger()
     response = requests.request("POST", url, headers=headers, data = payload)
     result = response.text.encode('utf8')
+    message = eval(str(result)[2:-1])['message']
     logger.info(result)
-    print(result)
+    print('********************************\n')
+    print(f'Result : {message} \n')
+    print('********************************')
     return result
 
 
