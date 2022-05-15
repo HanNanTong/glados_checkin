@@ -2,13 +2,12 @@
 import logging
 import requests
 import os
-result = b'success\n'
 # url
 url = "https://glados.rocks/api/user/checkin"
 # cookie
 cookie = os.environ["COOKIE"]
 
-payload = "{\"token\":\"glados_network\"}"
+payload = "{\"token\":\"glados.network\"}"
 headers = {
   'authority': 'glados.rocks',
   'accept': 'application/json, text/plain, */*',
@@ -27,8 +26,12 @@ def do_action():
     logger = logging.getLogger()
     response = requests.request("POST", url, headers=headers, data = payload)
     result = response.text.encode('utf8')
+    message = eval(str(result)[2:-1])['message']
+    days = len(eval(str(result)[2:-1])["list"])
     logger.info(result)
-    print(result)
+    print('*******************************************\n')
+    print(f'Result : {message}! Get another {days} days! \n')
+    print('*******************************************')
     return result
 
 
