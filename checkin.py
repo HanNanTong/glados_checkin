@@ -5,7 +5,7 @@ import os
 # url
 url = "https://glados.rocks/api/user/checkin"
 # cookie
-cookie = os.environ["COOKIE"]
+cookie = sys.argv[1]
 
 payload = "{\"token\":\"glados.network\"}"
 headers = {
