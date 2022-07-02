@@ -26,11 +26,12 @@ def do_action():
     logger = logging.getLogger()
     response = requests.request("POST", url, headers=headers, data = payload)
     result = response.text.encode('utf8')
-    message = eval(str(result)[2:-1])['message']
-    days = len(eval(str(result)[2:-1])["list"])
-    logger.info(result)
+
+    result_json = json.loads(result)
+    message = result_json['message']
+    logger.info(result_json)
     print('*******************************************\n')
-    print(f'Result : {message}! Get another {days} days! \n')
+    print('Result : {message}!  \n'.replace('message',message))
     print('*******************************************')
     return result
 
