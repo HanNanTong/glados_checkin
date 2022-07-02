@@ -23,6 +23,7 @@ headers = {
   'cookie': cookie
 }
 def do_action():
+    print(cookie)
     logger = logging.getLogger()
     response = requests.request("POST", url, headers=headers, data = payload)
     result = response.text.encode('utf8')
