@@ -26,9 +26,7 @@ def do_action():
     logger = logging.getLogger()
     response = requests.request("POST", url, headers=headers, data = payload)
     result = response.text.encode('utf8')
-    print('*******************************************\n')
-    print('Result : {result}!  \n'.replace('result',result))
-    print('*******************************************')
+    print(result)
     return result
 
 
