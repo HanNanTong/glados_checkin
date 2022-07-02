@@ -2,7 +2,6 @@
 import logging
 import requests
 import os
-import json
 # url
 url = "https://glados.rocks/api/user/checkin"
 # cookie
@@ -27,12 +26,8 @@ def do_action():
     logger = logging.getLogger()
     response = requests.request("POST", url, headers=headers, data = payload)
     result = response.text.encode('utf8')
-
-    result_json = json.loads(result)
-    message = result_json['message']
-    logger.info(result_json)
     print('*******************************************\n')
-    print('Result : {message}!  \n'.replace('message',message))
+    print('Result : {result}!  \n'.replace('result',result))
     print('*******************************************')
     return result
 
